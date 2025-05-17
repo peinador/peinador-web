@@ -1,8 +1,10 @@
 ---
-title: "Getting started"
-description: "Hit the ground running."
+title: "Hi there"
+description: "First post!"
 date: "Mar 22 2024"
 ---
+
+![lighthouse](./ligthhouse.jpeg)
 
 The basic configuration of Nano is pretty simple.
 
