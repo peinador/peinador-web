@@ -22,6 +22,18 @@ const { Content } = await post.render();
 ---
 
 <PageLayout title={post.data.title} description={post.data.description}>
+  {post.data.cover && (
+    <div class="animate relative w-4/5 mx-auto h-[60vh] mb-8">
+      <div class="absolute inset-0">
+        <img
+          src={post.data.cover}
+          alt={`Cover image for ${post.data.title}`}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-100 dark:to-stone-900"></div>
+      </div>
+    </div>
+  )}
   <Container>
     <div class="animate">
       <BackToPrev href="/blog">

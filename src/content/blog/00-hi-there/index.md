@@ -2,74 +2,24 @@
 title: "Hi there"
 description: "First post!"
 date: "Mar 22 2024"
+cover: "/blog/lighthouse.jpeg"
 ---
 
-![lighthouse](./ligthhouse.jpeg)
+Welcome to my personal blog! I'm excited to share my thoughts, discoveries, and explorations across various fields that fascinate me.
 
-The basic configuration of Nano is pretty simple.
+This space will be a melting pot of ideas spanning multiple disciplines, including:
 
-Edit `src/consts.ts`
+- Artificial Intelligence & Machine Learning
+- Data Science and Analytics
+- Mathematics and its beautiful applications
+- Theoretical Physics and our understanding of the universe
+- Electronics and hardware tinkering
+- Design principles and their implementation
 
-Customize the base site
+I believe these fields often intersect in interesting ways, creating opportunities for unique insights and innovative solutions. Whether you're a fellow enthusiast, a curious learner, or someone who just stumbled upon this blog, I hope you'll find something intriguing here.
 
-```ts 
-// src/consts.ts
+My goal is to share both technical deep-dives and accessible explanations, making complex topics more approachable while maintaining their depth and nuance.
 
-export const SITE: Site = {
-  NAME: "Astro Nano",
-  EMAIL: "markhorn.dev@gmail.com",
-  NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 2,
-  NUM_PROJECTS_ON_HOMEPAGE: 3,
-};
-```
+Stay tuned for posts ranging from practical tutorials to theoretical discussions, personal projects, and thought-provoking analyses. Let's explore these fascinating subjects together!
 
-| Field | Req | Description |
-| :---- | :-- | :-----------|
-| NAME | Yes | Displayed in header and footer. Used in SEO and RSS. |
-| EMAIL | Yes | Displayed in contact section. |
-| NUM_POSTS | Yes | Limit num of posts on home page. |
-| NUM_WORKS | Yes | Limit num of works on home page. |
-| NUM_PROJECTS | Yes | Limit num of projects on home page. |
 
-Customize your page metadata
-
-```ts 
-// src/consts.ts
-
-export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Astro Nano is a minimal and lightweight blog and portfolio.",
-};
-```
-
-| Field | Req | Description |
-| :---- | :-- | :-----------|
-| TITLE | Yes | Displayed in browser tab. Used in SEO and RSS. |
-| DESCRIPTION | Yes | Used in SEO and RSS. |
-
-Customize your social media
-
-```ts 
-// src/consts.ts
-
-export const SOCIALS: Socials = [
-  { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
-  },
-  { 
-    NAME: "github",
-    HREF: "https://github.com/markhorn-dev"
-  },
-  { 
-    NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
-  }
-];
-```
-
-| Field | Req | Description |
-| :---- | :-- | :-----------|
-| NAME | Yes | Displayed in contact section as a link. |
-| HREF | Yes | External url to social media profile. |
