@@ -1,0 +1,62 @@
+---
+interface Props {
+  radius?: number;
+  shadowOffset?: number;
+  shadowColor?: string;
+  borderWidth?: number; // percentage of container width
+  class?: string;
+}
+
+const {
+  radius = 8,
+  shadowOffset = 10,
+  shadowColor = "rgba(0, 0, 0, 0.3)",
+  borderWidth = 10, // default to 10% of container width
+  class: className = "",
+} = Astro.props;
+
+const styles = {
+  container: `
+    position: relative;
+    background-image: radial-gradient(${radius}px, transparent 98%, var(--stamp-dot-color) ${radius}px);
+    background-repeat: round;
+    background-position: ${-radius * 1.5}px ${-radius * 1.5}px;
+    background-size: ${radius * 3}px ${radius * 3}px;
+    background-color: transparent;
+    padding: ${borderWidth}%;
+    --stamp-shadow-color: ${shadowColor};
+  `,
+  before: `
+    content: '';
+    position: absolute;
+    inset: ${radius * 1.5}px;
+    z-index: -1;
+    background: var(--stamp-bg-color);
+    filter: drop-shadow(0 ${shadowOffset}px ${shadowOffset}px var(--stamp-shadow-color));
+  `,
+  content: `
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  `
+};
+---
+
+<style>
+  .stamp {
+    --stamp-dot-color: white;
+    --stamp-bg-color: white;
+  }
+  :global(.dark) .stamp {
+    --stamp-dot-color: rgb(102, 102, 102);
+    --stamp-bg-color: rgb(102, 102, 102);
+    --stamp-shadow-color: rgba(0, 0, 0, 0.9);
+  }
+</style>
+
+<div class:list={["stamp", className]} style={styles.container}>
+  <div style={styles.before}></div>
+  <div style={styles.content}>
+    <slot />
+  </div>
+</div> 

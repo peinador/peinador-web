@@ -5,6 +5,8 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
+import StampBorder from "@components/StampBorder.astro";
+import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -22,24 +24,18 @@ const { Content } = await post.render();
 ---
 
 <PageLayout title={post.data.title} description={post.data.description}>
-  {post.data.cover && (
-    <div class="animate relative w-4/5 mx-auto h-[60vh] mb-8">
-      <div class="absolute inset-0">
-        <img
-          src={post.data.cover}
-          alt={`Cover image for ${post.data.title}`}
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-100 dark:to-stone-900"></div>
-      </div>
-    </div>
-  )}
   <Container>
-    <div class="animate">
-      <BackToPrev href="/blog">
-        Back to blog
-      </BackToPrev>
-    </div>
+    {post.data.cover && (
+      <div class="animate relative w-40 max-w-xl mx-auto mb-8">
+        <StampBorder radius={4} borderWidth={10}>
+          <img
+            src={post.data.cover}
+            alt={`Cover image for ${post.data.title}`}
+            class="w-full h-auto object-contain"
+          />
+        </StampBorder>
+      </div>
+    )}
     <div class="space-y-1 my-10">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
@@ -57,5 +53,17 @@ const { Content } = await post.render();
     <article class="animate">
       <Content />
     </article>
+    {post.data.tags && post.data.tags.length > 0 && (
+      <div class="animate mt-8 flex flex-wrap gap-2">
+        {post.data.tags.map((tag) => (
+          <Tag tag={tag} />
+        ))}
+      </div>
+    )}
+    <div class="animate pt-10">
+      <BackToPrev href="/blog">
+        Back to blog
+      </BackToPrev>
+    </div>
   </Container>
 </PageLayout>
