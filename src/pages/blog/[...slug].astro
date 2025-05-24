@@ -9,9 +9,9 @@ import StampBorder from "@components/StampBorder.astro";
 import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog"))
-    .filter(post => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+    .filter((post: CollectionEntry<"blog">) => !post.data.draft)
+    .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => b.data.date.valueOf() - a.data.date.valueOf());
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
@@ -55,7 +55,7 @@ const { Content } = await post.render();
     </article>
     {post.data.tags && post.data.tags.length > 0 && (
       <div class="animate mt-8 flex flex-wrap gap-2">
-        {post.data.tags.map((tag) => (
+        {post.data.tags.map((tag:string) => (
           <Tag tag={tag} />
         ))}
       </div>
