@@ -71,3 +71,12 @@ html #back-to-top {
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
 }
+
+/* Mermaid dark mode support for @beoe/rehype-mermaid */
+html:not(.dark) .beoe-dark {
+  display: none;
+}
+
+html.dark .beoe-light {
+  display: none;
+}
