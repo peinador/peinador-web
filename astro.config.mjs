@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
     syntaxHighlight: {
-      excludeLangs: ['mermaid']
+      excludeLangs: ["mermaid"]
     },
     rehypePlugins: [[rehypeMermaid, {
       strategy: "data-url",      // alternatively use "data-url"
