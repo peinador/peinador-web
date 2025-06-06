@@ -153,7 +153,7 @@ You can discover new self-hosted apps at:
 
 
 
-# Summary Diagram
+## Summary Diagram
 
 ```mermaid
 flowchart TD

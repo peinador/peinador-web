@@ -1,0 +1,20 @@
+.font-display-bold {
+  @apply font-display;
+  font-weight: 600;
+  font-variation-settings: "WONK" 1;
+  font-optical-sizing: auto;
+}
+
+.font-display-light {
+  @apply font-display;
+  font-weight: 200;
+  font-variation-settings: "WONK" 1;
+  font-optical-sizing: auto;
+} 
+
+.font-display-italic {
+  @apply font-display;
+  font-style: italic;
+  font-variation-settings: "WONK" 1 "SOFT" 50;
+  font-optical-sizing: auto;
+}
