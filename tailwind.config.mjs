@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        serif: ["Fraunces Variable", "Lora", ...defaultTheme.fontFamily.serif],
+        serif: ["Fraunces Variable", ...defaultTheme.fontFamily.serif],
         display: ["Fraunces Variable", ...defaultTheme.fontFamily.serif],
       },
     },
