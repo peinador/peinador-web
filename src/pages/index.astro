@@ -38,7 +38,7 @@ const projects = (await getCollection("projects"))
     </h1>
     <div class="mt-4">
       <h2 class="animate text-xl font-display-italic font-light text-stone-600 dark:text-stone-400">
-        A personal website for my ramblings and projects
+        A personal website for my projects and ramblings
       </h2>
     </div>
 
@@ -46,22 +46,23 @@ const projects = (await getCollection("projects"))
       <section>
         <article class="space-y-4">
           <p class="animate">
-            I enjoy building things, so I thought
-            it would be fun to make this website. Currently I work as a data scientist 
-            (or ML engineer depending on some definitions), so I spend a lot of time 
-            thinking about Machine Learning, data, statistics and software. I'm also a 
-            doctor in Physics. I'll add content here from time to time about things I find interesting.
+            This is the website of David Peinador. My main interest is Artificial Intelligence,
+            which is what I do professionally. Lately I've been working on evaluating 
+            the safety risks of LLMs. LLMs are trendy, but I've also worked with other types of models.
+            I quite like Bayesian methods and survival analysis, for example.
           </p>
           <p class="animate">
-            This page was created with 
-            <Link href="https://github.com/withastro/astro">
-              Astro
-            </Link>
-            and based on the 
-            <Link href="https://github.com/markhorn-dev/astro-nano">
-              Astro Nano
-            </Link>
-            theme.
+            Before getting into AI professionally, I did a <Link href="https://qmro.qmul.ac.uk/xmlui/handle/123456789/82079">PhD</Link> in theoretical physics. I specialised in classical general relativity,
+            black holes and some quantum filed theory. I'm still interested in physics 
+            and mathematics, even if I no longer read  research papers every day.
+
+          </p>
+          <p class="animate">
+            I made this website as I thought it would be fun to do. 
+            I enjoy building things and making them look nice.
+            I also find some appeal in the idea of owning a corner of the internet, 
+            independent from anyone (aside from the domain registrar, DNS provider, etc.).
+            You can learn more about how I made it <Link href="/projects/website">here</Link>.
           </p>
         </article>
       </section>
@@ -152,6 +153,21 @@ const projects = (await getCollection("projects"))
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <footer>
+          <p class="animate">
+            * This page was created with 
+            <Link href="https://github.com/withastro/astro">
+              Astro
+            </Link>
+            and based on the 
+            <Link href="https://github.com/markhorn-dev/astro-nano">
+              Astro Nano
+            </Link>
+            theme.
+          </p>
+          </footer>
       </section>
     </div>
   </Container>
