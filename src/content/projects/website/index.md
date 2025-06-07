@@ -3,6 +3,7 @@ title: "My Website"
 description: "A detailed explanation of how I built this website, from framework selection to hosting decisions."
 date: "May 18 2025"
 repoURL: "https://github.com/peinador/peinador-web"
+demoURL: "/"
 ---
 
 Building a personal website is a rewarding process, offering a space to share ideas, projects, or simply a digital presence. This document outlines the key decisions and technologies that went into creating this website, from the underlying framework to the hosting solution.

@@ -6,6 +6,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
+import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
   const projects: CollectionEntry<"projects">[] = (await getCollection("projects"))
@@ -43,19 +44,20 @@ const { Content } = await project.render();
         {project.data.title}
       </div>
       {(project.data.demoURL || project.data.repoURL) && (
-        <nav class="animate flex gap-1">
+        <nav class="animate flex gap-1 pt-5">
           {project.data.demoURL && (
+            <Tag icon="globe">
             <Link href={project.data.demoURL} external>
               demo
             </Link>
-          )}
-          {project.data.demoURL && project.data.repoURL && (
-            <span>/</span>
+          </Tag>
           )}
           {project.data.repoURL && (
-            <Link href={project.data.repoURL} external>
-              repo
-            </Link>
+            <Tag icon="git">
+              <Link href={project.data.repoURL} external>
+                repo
+              </Link>
+            </Tag>
           )}
         </nav>
       )}
