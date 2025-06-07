@@ -38,9 +38,16 @@ footer {
   @apply py-5 text-sm;
 }
 
+.font-article{
+  @apply font-serif;
+  font-weight: 370;
+  font-variation-settings: "WONK" 0, "SOFT" 60;
+  font-optical-sizing: auto;
+}
+
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply font-serif;
+  @apply font-article;
   @apply prose-headings:font-sans prose-p:font-serif;
   @apply prose-blockquote:font-serif prose-strong:font-serif prose-em:font-serif;
   @apply prose-headings:text-black prose-headings:dark:text-white;
