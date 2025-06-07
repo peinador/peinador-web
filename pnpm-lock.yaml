@@ -26,6 +26,12 @@ importers:
       '@beoe/rehype-mermaid':
         specifier: ^0.4.2
         version: 0.4.2(playwright@1.52.0)
+      '@fontsource-variable/fraunces':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/fraunces':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@fontsource/inter':
         specifier: ^5.0.17
         version: 5.2.5
@@ -408,6 +414,12 @@ packages:
   '@eslint/plugin-kit@0.3.1':
     resolution: {integrity: sha512-0J+zgWxHN+xXONWIyPWKFMgVuJoZuGiIFu8yxk7RJjxkzpGmyja5wRFqZIVtjDVOQpV+Rw0iOAjYPE2eQyjr0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource-variable/fraunces@5.2.6':
+    resolution: {integrity: sha512-r6ZYF7GDK2ANQBAXuuSUtoJslFzCTANlgfhDUnxlWHt/uHstAukqtRXaMcwVmmvzAo/KtuPo9zlPjkLxWYYEzw==}
+
+  '@fontsource/fraunces@5.2.6':
+    resolution: {integrity: sha512-jif5QR10IW7bbIN1CLh/dOj2KXf7KKzeyDNbodeKGPbONIUYARzZ4CemD0aooZqbvx8OFnL4/1Jt0M2j2CYbhw==}
 
   '@fontsource/inter@5.2.5':
     resolution: {integrity: sha512-kbsPKj0S4p44JdYRFiW78Td8Ge2sBVxi/PIBwmih+RpSXUdvS9nbs1HIiuUSPtRMi14CqLEZ/fbk7dj7vni1Sg==}
@@ -4092,6 +4104,10 @@ snapshots:
     dependencies:
       '@eslint/core': 0.14.0
       levn: 0.4.1
+
+  '@fontsource-variable/fraunces@5.2.6': {}
+
+  '@fontsource/fraunces@5.2.6': {}
 
   '@fontsource/inter@5.2.5': {}
 
