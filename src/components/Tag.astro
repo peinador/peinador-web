@@ -1,11 +1,52 @@
 ---
+import { readFileSync } from "fs";
+import { join } from "path";
+
 interface Props {
-  tag: string;
+  tag?: string;
+  icon?: string;
 }
 
-const { tag } = Astro.props;
+const { tag, icon } = Astro.props;
+
+// Function to load SVG content from file
+function loadSvgIcon(iconName: string) {
+  if (!iconName) return null;
+  
+  try {
+    const svgPath = join(process.cwd(), "public", "icons", `${iconName}.svg`);
+    let svgContent = readFileSync(svgPath, "utf-8");
+    
+    // Remove XML declaration and comments if present
+    svgContent = svgContent
+      .replace(/<\?xml[^>]*\?>/, "")
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .trim();
+    
+    // Ensure the SVG uses currentColor for theming
+    // Replace fill="#000000", fill="#ffffff", or fill="black" with fill="currentColor"
+    svgContent = svgContent
+      .replace(/fill="#[0-9a-fA-F]{6}"/g, "fill=\"currentColor\"")
+      .replace(/fill="#[0-9a-fA-F]{3}"/g, "fill=\"currentColor\"")
+      .replace(/fill="black"/g, "fill=\"currentColor\"")
+      .replace(/fill="white"/g, "fill=\"currentColor\"");
+    
+    // Set appropriate width and height for consistency
+    svgContent = svgContent
+      .replace(/width="[^"]*"/g, "width=\"16\"")
+      .replace(/height="[^"]*"/g, "height=\"16\"");
+    
+    return svgContent;
+  } catch (error) {
+    console.warn(`Failed to load icon: ${iconName}`, error);
+    return null;
+  }
+}
+
+const svgContent = icon ? loadSvgIcon(icon) : null;
 ---
 
-<span class="inline-block px-3 py-1 text-sm font-medium rounded-full bg-stone-100 dark:bg-stone-800 text-gray-700 dark:text-gray-300 hover:bg-stone-200 dark:hover:bg-gray-700 transition-colors">
-  {tag}
+<span class="inline-flex items-center gap-1 px-3 py-1 text-sm font-medium rounded-full bg-stone-200 dark:bg-stone-700 text-gray-700 dark:text-gray-300 hover:bg-stone-100 dark:hover:bg-gray-800 transition-colors">
+  {svgContent && <span class="flex-shrink-0 w-4 h-4 fill-current" set:html={svgContent}></span>}
+  <span>{tag || <slot />}</span>
 </span> 

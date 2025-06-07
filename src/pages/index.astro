@@ -4,6 +4,7 @@ import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
+import Tag from "@components/Tag.astro";
 //import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
@@ -33,7 +34,7 @@ const projects = (await getCollection("projects"))
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h1 class="animate text-6xl font-display-light text-black dark:text-white">
-      Selected Tokens
+      Curated Tokens
     </h1>
     <div class="mt-4">
       <h2 class="animate text-2xl font-display-italic font-light text-stone-600 dark:text-stone-400">
@@ -143,17 +144,13 @@ const projects = (await getCollection("projects"))
         <ul class="flex flex-wrap gap-2">
           {SOCIALS.map(SOCIAL => (
             <li class="flex gap-x-2 text-nowrap">
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-              {"/"}
+              <Tag icon={SOCIAL.ICON}>
+                <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                  {SOCIAL.NAME}
+                </Link>
+                </Tag>
             </li>
           ))}
-          <!-- <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
-            </Link>
-          </li> -->
         </ul>
       </section>
     </div>
