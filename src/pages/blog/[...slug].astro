@@ -27,7 +27,7 @@ const { Content } = await post.render();
   <Container>
     {post.data.cover && (
       <div class="animate relative w-40 max-w-xl mx-auto mb-8">
-        <StampBorder radius={4} borderWidth={10}>
+        <StampBorder radius={8} innerPadding={8}>
           <img
             src={post.data.cover}
             alt={`Cover image for ${post.data.title}`}
