@@ -1,0 +1,254 @@
+---
+// No props needed for this component
+---
+
+<div class="font-weight-demo block m-8 p-6 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+  <div class=" m-4">
+    <!-- Font Weight Slider -->
+    <div>
+      <label for="weight-slider" class="block text-sm font-sans font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Font Weight: <span id="weight-value">400</span>
+      </label>
+      <input 
+        type="range" 
+        id="weight-slider" 
+        min="100" 
+        max="900" 
+        value="400" 
+        step="1"
+        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+      />
+    </div>
+
+    <!-- Optical Size Slider -->
+    <div>
+      <label for="opsz-slider" class="block text-sm font-sans font-medium text-gray-700 dark:text-gray-300 mb-2">
+        Optical Size: <span id="opsz-value">16</span>pt
+      </label>
+      <input 
+        type="range" 
+        id="opsz-slider" 
+        min="9" 
+        max="144" 
+        value="16" 
+        step="1"
+        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+      />
+    </div>
+
+    <!-- Softness Slider -->
+    <div>
+        <label for="soft-slider" class="block text-sm font-sans font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Softness: <span id="soft-value">16</span>pt
+        </label>
+        <input 
+            type="range" 
+            id="soft-slider" 
+            min="0" 
+            max="100" 
+            value="50" 
+            step="1"
+            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+        />
+    </div>
+
+    <!-- Italic Toggle -->
+    <div class="flex items-center">
+      <input 
+        type="checkbox" 
+        id="italic-toggle" 
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label for="italic-toggle" class="ml-2 text-sm font-sans font-medium text-gray-700 dark:text-gray-300">
+        Italic
+      </label>
+    </div>
+
+    <!-- WONK Toggle -->
+    <div class="flex items-center">
+      <input 
+        type="checkbox" 
+        id="wonk-toggle" 
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label for="wonk-toggle" class="ml-2 font-sans text-sm font-medium text-gray-700 dark:text-gray-300">
+        WONK
+      </label>
+    </div>
+  </div>
+
+  
+  <div class="p-4">
+    <p 
+      id="demo-text" 
+      class="leading-relaxed transition-all duration-200 font-serif"
+      style="font-weight: 400; font-variation-settings: 'opsz' 16, 'WONK' 0, 'SOFT' 60;"
+    >
+      The quick brown fox jumped over the lazy dog
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const weightSlider = document.getElementById("weight-slider") as HTMLInputElement;
+    const opszSlider = document.getElementById("opsz-slider") as HTMLInputElement;
+    const softSlider = document.getElementById("soft-slider") as HTMLInputElement;
+    const italicToggle = document.getElementById("italic-toggle") as HTMLInputElement;
+    const wonkToggle = document.getElementById("wonk-toggle") as HTMLInputElement;
+    const demoText = document.getElementById("demo-text") as HTMLElement;
+    const weightValue = document.getElementById("weight-value") as HTMLElement;
+    const opszValue = document.getElementById("opsz-value") as HTMLElement;
+    const softValue = document.getElementById("soft-value") as HTMLElement;
+    
+    // Initial values
+    let currentWeight = 400;
+    let currentOpsz = 16;
+    let currentWonk = 0;
+    let currentSoft = 60;
+    let isItalic = false;
+    
+    function updateFont() {
+      if (demoText) {
+        // Update font weight
+        demoText.style.fontWeight = currentWeight.toString();
+        
+        // Update font variation settings
+        const variations = [
+          `'opsz' ${currentOpsz}`,
+          `'WONK' ${currentWonk}`,
+          `'SOFT' ${currentSoft}`
+        ];
+        demoText.style.fontVariationSettings = variations.join(", ");
+        
+        // Update italic style
+        demoText.style.fontStyle = isItalic ? "italic" : "normal";
+      }
+    }
+    
+    if (weightSlider && weightValue) {
+      weightSlider.addEventListener("input", function() {
+        currentWeight = parseInt(this.value);
+        weightValue.textContent = currentWeight.toString();
+        updateFont();
+      });
+    }
+    
+    if (opszSlider && opszValue) {
+      opszSlider.addEventListener("input", function() {
+        currentOpsz = parseInt(this.value);
+        opszValue.textContent = currentOpsz.toString();
+        updateFont();
+      });
+    }
+    
+    if (softSlider && softValue) {
+      softSlider.addEventListener("input", function() {
+        currentSoft = parseInt(this.value);
+        softValue.textContent = currentSoft.toString();
+        updateFont();
+      });
+    }
+    
+    if (italicToggle) {
+      italicToggle.addEventListener("change", function() {
+        isItalic = this.checked;
+        updateFont();
+      });
+    }
+    
+    if (wonkToggle) {
+      wonkToggle.addEventListener("change", function() {
+        currentWonk = this.checked ? 1 : 0;
+        updateFont();
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Ensure styles work in MDX context */
+  .font-weight-demo {
+    display: block;
+    margin: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+  }
+  
+  
+  @media (min-width: 768px) {
+    .font-weight-demo > div:first-child {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .font-weight-demo label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-top: 0.5rem;
+  }
+  
+  .font-weight-demo input[type="range"] {
+    width: 100%;
+    height: 0.5rem;
+    background: #d1d5db;
+    border-radius: 0.5rem;
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .font-weight-demo input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    color: #2563eb;
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+    border-radius: 0.25rem;
+  }
+  
+  .font-weight-demo .flex {
+    display: flex;
+    align-items: center;
+  }
+  
+  .font-weight-demo .flex label {
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+  }
+  
+  .font-weight-demo .text-center {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  #demo-text {
+    font-size: 2rem;
+    line-height: 1.625;
+    transition: all 0.2s;
+  }
+  
+  /* Dark mode styles */
+  html.dark .font-weight-demo {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+  
+  html.dark .font-weight-demo label {
+    color: #d1d5db;
+  }
+  
+  html.dark .font-weight-demo input[type="range"] {
+    background: #374151;
+  }
+  
+  html.dark .font-weight-demo input[type="checkbox"] {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+
+</style> 
