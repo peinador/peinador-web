@@ -1,0 +1,3 @@
+[submodule "public/cv"]
+	path = public/cv
+	url = https://github.com/peinador/cv.git
